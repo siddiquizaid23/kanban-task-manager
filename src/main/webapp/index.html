@@ -4,18 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban Task Manager</title>
-    <link rel="stylesheet" href="style.css">  <!-- ✅ CORRECT PATH -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>📋 Kanban Task Manager</h1>
-        <h2>✅ Setup Complete - Day 1 Done!</h2>
-        <p>Tomcat is running on http://localhost:8080/kanban-app/</p>
-        <p style="color: green; font-weight: bold;">✅ Database is ready</p>
-        <p style="color: green; font-weight: bold;">✅ GitHub repo is initialized</p>
-        <p>Backend servlets coming tomorrow (Day 2)...</p>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <h1>📋 Kanban Task Manager</h1>
+            <button class="add-task-btn" onclick="openModal()">+ Add Task</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <!-- KANBAN BOARD -->
+        <div class="kanban-board">
+            
+            <!-- COLUMN 1: TO-DO -->
+            <section class="column" id="todo-column">
+                <div class="column-header">
+                    <h2>To-Do</h2>
+                    <span class="task-count" id="todo-count">0</span>
+                </div>
+                <div class="task-list" id="todo-list" ondrop="handleDrop(event, 'TODO')" ondragover="handleDragOver(event)">
+                    <!-- Tasks will be loaded here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- COLUMN 2: IN PROGRESS -->
+            <section class="column" id="in-progress-column">
+                <div class="column-header">
+                    <h2>In Progress</h2>
+                    <span class="task-count" id="in-progress-count">0</span>
+                </div>
+                <div class="task-list" id="in-progress-list" ondrop="handleDrop(event, 'IN_PROGRESS')" ondragover="handleDragOver(event)">
+                    <!-- Tasks will be loaded here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- COLUMN 3: DONE -->
+            <section class="column" id="done-column">
+                <div class="column-header">
+                    <h2>Done</h2>
+                    <span class="task-count" id="done-count">0</span>
+                </div>
+                <div class="task-list" id="done-list" ondrop="handleDrop(event, 'DONE')" ondragover="handleDragOver(event)">
+                    <!-- Tasks will be loaded here by JavaScript -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- MODAL FOR ADDING TASK -->
+    <div id="taskModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Task</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <form id="taskForm" onsubmit="handleAddTask(event)">
+                
+                <!-- Task Title (Required) -->
+                <div class="form-group">
+                    <label for="taskTitle">Task Title *</label>
+                    <input 
+                        type="text" 
+                        id="taskTitle" 
+                        placeholder="Enter task title..." 
+                        required
+                        autofocus
+                    >
+                </div>
+
+                <!-- Task Description (Optional) -->
+                <div class="form-group">
+                    <label for="taskDescription">Description</label>
+                    <textarea 
+                        id="taskDescription" 
+                        placeholder="Enter task description (optional)..." 
+                        rows="4"
+                    ></textarea>
+                </div>
+
+                <!-- Task Priority -->
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority">
+                        <option value="LOW">Low Priority</option>
+                        <option value="MEDIUM" selected>Medium Priority</option>
+                        <option value="HIGH">High Priority</option>
+                    </select>
+                </div>
+
+                <!-- Form Buttons -->
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Create Task</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
     </div>
-    
-    <script src="script.js"></script>  <!-- ✅ CORRECT PATH -->
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
 </body>
 </html>
