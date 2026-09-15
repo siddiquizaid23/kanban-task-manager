@@ -1,0 +1,45 @@
+/* Kanban Task Manager - Day 1 Placeholder */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+p {
+    color: #666;
+    line-height: 1.8;
+    margin: 15px 0;
+    font-size: 1.1em;
+}
